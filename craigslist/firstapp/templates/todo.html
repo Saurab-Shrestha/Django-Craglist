@@ -1,0 +1,338 @@
+{% extends 'base.html' %}
+{% block bootstrap %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    
+/* .content-wrapper{
+    padding: 0;
+    margin: 0;
+    box-shadow: border-box;
+    justify-content: center;
+    align-items: center;
+} */
+html{
+    overflow-y: scroll;
+}
+
+.card-todo{
+    margin:0 auto;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 900px;
+    height: 510px;
+    max-height: auto;
+    background-color: #fff;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    text-align: center;
+    perspective: 3000px;
+    position: relative;
+}
+.todo-add-container{
+    background-color: #9BF2BB;
+}
+
+.todo-add-container,
+.todo-list-container{
+    padding: 10px;
+    padding-left: 30px;
+    width: 450px;
+    height: 100%;
+}
+.content{
+    padding-top: 50px;
+}
+.todo-title{
+    border-bottom: 2px solid currentColor;
+    display: inline-block;
+    margin-bottom: .3em;
+    font-family: cursive;
+}
+.form__group,
+.add-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: .7em ; 
+}
+.form__group label{
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+}
+
+.form__group input{
+    padding: .5em;
+    width: 90%;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+}
+.form__group input:focus{
+    outline: 1.5px solid black;
+}
+
+.btn-blue{
+    margin-top: 1rem;
+    background: #0b4eba;
+    outline: none;
+    border: none;
+    height: 60px;
+    width: 60px;
+    font-size: 1.5rem;
+    color: #fff;
+    font-family: sans-serif;
+    letter-spacing: .5px;
+    font-weight: 500;
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+    transition: transform 500ms, box-shadow 500ms;
+    border-radius: 50%;
+}
+.btn-blue:hover{
+    --translateZ:6em;
+    transform:perspective(3000px) translateZ(var(--translateZ));
+    box-shadow:5px 5px 10px rgba(0,0,0,.3);
+    transition:500ms;
+    cursor:pointer;
+}
+
+.content-todo{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.form__group.search{
+    width: 50%;
+    padding: .5em;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;  
+}
+.dropbtn{
+    background-color: #57ac76;
+    color: #fff;
+    padding: 10px;
+    width: 80px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    background: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+.dropdown-menu .dropdown-list{
+    color: black;
+    padding: 10px 8px;
+    list-style-type: none;
+    display: block;
+    cursor: pointer;
+}
+.dropdown-list:hover{
+    background-color:  #d8d7d7;
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+/* tasks list */
+.tasks{
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+.accordion{
+    margin: 5px 0px;
+}
+.acc-container{
+    margin: 0 0 10px;
+    max-width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.acc-title{
+    max-width: 100%;
+    background: #222;
+    color: #fff;
+    border-radius: 4px;
+    padding: 14px 20px;
+    font-weight: normal;
+    position: relative;
+    transition: all .3s ease-in-out;
+   /*  display: flex; */
+}
+.acc-active .acc-title,
+.acc-title:hover{
+    background: #565656;
+    cursor: pointer;
+}
+
+.acc-title.checked{
+    background: #888;
+    text-decoration: line-through;
+}
+
+.acc-title.checked::before{
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+.acc-title:after{
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewbox='0 0 25 25'%3E%3Cline x1='6' y1='12.5' x2='19' y2='12.5' fill='none' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /%3E%3Cline y1='6' x1='12.5' y2='19' x2='12.5' fill='none' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /%3E%3C/svg%3E"); /*Plus sign*/
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -12.5px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.acc-active .acc-title:after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewbox='0 0 25 25'%3E%3Cline x1='6' y1='12.5' x2='19' y2='12.5' fill='none' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /%3E%3C/svg%3E"); /*Minus sign*/
+}
+
+.acc-content{
+    color: white;
+    background-color: rgb(95, 88, 88);
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 1;
+    padding: 0 20px;
+    transition: all 0.2s ease-in-out;
+    justify-content: justify;
+    border-radius: 4px;
+}
+.acc-active .acc-content{
+    padding: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+    opacity: 1;
+}
+</style>
+{% endblock bootstrap %}
+{% block content %}
+<!-- <h1>Hello, world!</h1> -->
+<div class="card-todo">
+
+    <div class="todo-add-container">
+        <h1 class="todo-title">Todo Add</h1>
+        <div class="content">
+            <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+                <div class="form__group">
+                    <label for="title">Title</label>
+                    {{todo_form.title}}
+                </div>
+               <!--  <div class="form__group">
+                    <label for="description">Description</label>
+                    {{todo_form.desc}}
+                </div>
+                <div class="form__group">
+                    <label for="usr">Due Date:</label>
+                    {{todo_form.duedate}}
+                </div> -->
+                <div class="add-btn">
+                    <button type="submit" class="btn-blue"><i class="fas fa-plus"></i></button>
+                </div>
+            </form>
+        </div>
+       
+    </div>
+
+    <div class="todo-list-container">
+        <div class="todo-list">
+            <h1 class="todo-title">Todo List</h1>
+            <div class="content-todo">
+                <div class="form__group search">
+                    <div class="input-group">
+                      <input id="search-text" onkeyup="searchInList()" type="text" class="form-control" placeholder="Search..." name="search">
+                    </div>
+                </div>
+                <div class="form__group">
+                    <div class="dropdown">
+                        <button class="dropbtn">Sort <span><i class="fas fa-sort"></i></span></button>
+
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-list">By ID</li>
+                            <li class="dropdown-list">By Name</li>
+                        </ul>
+                     <!--    
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-list" onclick="sortElementsById()">By ID</li>
+                            <li class="dropdown-list" onclick="sortElementsByName()">By Name</li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+            <div class="tasks">
+                        
+                <ul id="accordian">
+                    {% for task in todos %}
+                    <li class="acc-container">
+                        {% if task.completed == True%}
+                        <h3 class="acc-title"><strike>{{task.title}}</strike></h3>
+                        <div class="acc-content">
+                            <div class="float-right">
+                                <a href="{% url "update_todo" task.id %}" class="btn-blue">Update</a>
+                                <a href="{% url "delete_todo" task.id %}" class="btn-blue">Delete</a>
+                            </div>
+                            <!-- <p>{{task.desc}}</p> -->
+                        </div>
+                        {% else %}
+                        <h3 class="acc-title">{{task.title}}</h3>
+                        <div class="acc-content">
+                            <div class="float-right">
+                                <a href="{% url "update_todo" task.id %}" class="btn-blue">Update</a>
+                                <a href="{% url "delete_todo" task.id %}" class="btn-blue">Delete</a>
+                            </div>
+                          <!--   <p>{{task.desc}}</p> -->
+                        </div>
+                        {% endif %}
+                        
+
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    const accTitle = document.querySelectorAll('.acc-title');
+var i;
+for(i=0;i<accTitle.length;i++){
+    accTitle[i].addEventListener("click",function(e){
+        this.classList.toggle('acc-active');
+        var content = this.nextElementSibling;
+        if(content.style.maxHeight){
+            content.style.maxHeight = null;
+        }else{
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+}
+
+</script>
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Project Website</title>
+
+    <link rel="stylesheet" href="{% static 'firstapp/css/all.css' %}/">
+    <link rel="stylesheet" href="{% static 'firstapp/css/fontawesome-free-5.12.0-web/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'firstapp/css/fontawesome-free-5.12.0-web/css/all.min.css' %}">
+  <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="{% static 'firstapp/css/nav.css' %}">
+    {% block bootstrap %}
+    {% endblock bootstrap %}
+   
+    
+</head>
+
+<body>
+
+<section class="container-fluid">
+    <div id="menu-admin">
+        <div id="responsive-menu" class="topnav">
+            <a href="javascript:void(0);" class="hamburger" onclick="myFunction()"><i class="fas fa-hamburger"></i></a>
+        </div>
+        <div id="logo">
+            <img title="Django Projects" src="{% static 'firstapp/images/wolf.png' %}" class="img" alt="">
+            <span><h1 class="title h3">Django Projects</h1></span>
+        </div>
+
+            <!-- menu -->
+            <div id="menu">
+                <a href="{% url 'home'%}" title="craigslist"><i class="fas fa-home"></i><span>Criagslist</span></a>
+                <a href="{% url 'weather' %}" title="Weather App"><i class="fas fa-cloud"></i><span>Weather</span></a>
+                <a href="{% url 'todo' %}" title="Todo App"><i class="fas fa-paper-plane"></i><span>Todo List</span></a>
+                <a href="{% url 'caloriemeter' %}" title="Calorie Meter"><i class="fas fa-carrot"></i><span>Calorie Meter</span></a>
+                <a href="#" title="Project Notes"><i class="fas fa-paperclip"></i><span>Project Notes</span></a>
+                <a href="{% url 'text_to_html' %}" title="Text-to-HTML"><i class="fas fa-text-width"></i><span>Text-to-HTML</span></a>
+            </div>
+            <!-- menu end -->
+    </div>
+
+    <div class="content-wrapper">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+
+</section>
+<script>
+    /* Text-to-html js */
+    function TextConvert(){
+        var x = CKEDITOR.instances['id_body'].getData();
+        var y = document.getElementById('htmldata');
+        y.innerHTML = x;
+    }
+</script>
+
+<!-- ++++++++++++++++++++ boostrap cdn ++++++++++++++++++++++++ -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    <script src="{% static 'firstapp/js/app.js' %}"></script>
+    <script src="{% static 'firstapp/js/weather.js' %}"></script>
+</body>
+</html>

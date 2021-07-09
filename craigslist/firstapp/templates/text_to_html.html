@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block bootstrap %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    #cke_id_body {
+        width: inherit !important;
+    }
+    .htmleditor p {
+        font-weight: 900;
+        font-size: 20px;
+    }
+    .texteditor p label {
+        font-weight: 800;
+        font-size: 18px;
+    }
+    #htmldata {
+        font-weight: 600;
+    }
+</style>
+{% endblock bootstrap %}
+{% block content %}
+
+<!-- bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Text to HTMl </a>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div class="texteditor">
+                {{form.media}}
+                {{form.as_p}}
+            </div>
+            <input type="submit" class="btn btn-info" onclick="TextConvert()">
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div class="htmleditor">
+                <p>HTML Editor</p>
+                <div class="form-group">
+                    <textarea class="form-control" name="textarea" id="htmldata" cols="30" rows="10">
+
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,624 @@
+@font-face {
+    font-family: "Roboto";
+    src: url('../fonts/Roboto-Regular-webfont.woff');
+}
+:root {
+    --bg_main: #0a1f44;
+    --text_light: #fff;
+    --text_med: #53627c;
+    --text_dark: #1e2432;
+    --red: #ff1e42;
+    --darkred: #c3112d;
+    --orange: #ff8c00;
+}
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Roboto";
+    background: linear-gradient( to right,#A40606,#D98324);
+    height: 100%;
+}
+  
+a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+   
+  input {
+    -webkit-appearance: none;
+}
+  ul {
+    list-style: none;
+}
+
+/* Start of Navigation Menu */
+#menu-admin{
+    float: left;
+    width: 200px;
+    background-color: inherit;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    left: 0px;
+    top: 0;
+    min-height: 100vh;
+    box-shadow:  5px  1px #e02525;
+    margin: 0 !important;
+}
+
+
+#menu-admin .topnav{
+    height: 50px;
+    display: none;
+    line-height: 50px;
+    cursor: pointer;
+    color: #ffffff;
+    text-indent: 10px;
+}
+#menu-admin #repsonsive-menu .hamburger{
+    color: #ffffff;
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+#logo{
+    padding: 2rem 2rem;
+}
+#logo img{
+    margin-left: 10px;
+    width: 100px;
+    position: relative;
+    overflow: hidden;
+    transition: 1s ease;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+}
+#logo img:hover{
+    transform: rotate(-20deg) scale(1.1);
+}
+#logo span h1{
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+/* menu styles */
+
+#menu-admin #menu{
+    padding-top: 50px;
+    width: 100%;
+    
+}
+#menu-admin #menu a{
+    border-bottom: 1px dotted #52535a;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    color: #ffffff;
+    position: sticky !important;
+    font-weight: 400;
+    overflow: hidden;
+    transition: 0.3s linear;
+}
+#menu-admin #menu a:hover {
+	color: #52535a;
+	background-color:#fcfcfc;
+}
+#menu-admin #menu i{
+    width: 16px;
+    padding-right: 4px;
+}
+#menu-admin #menu div{
+    display: none;
+    width: 100%;
+    background-color: inherit;
+    overflow: hidden;
+}
+#menu-admin #menu div a{
+    color: white;
+}
+#menu-admin #menu div a:hover{
+    color: #c0c0c0;
+}
+#menu-admin #menu i {
+	width: 20px;
+	padding-right: 10px;
+}
+#menu-admin #menu a span{
+    padding-left: 10px;
+}
+/* end of Navigation section */
+
+
+/* Start of Content Wrapper Section */
+.content-wrapper{
+    width: auto;
+	margin-left: 200px;
+	height: 1200px;
+	padding: 15px;
+}
+
+.card{
+    height: auto;
+    min-height: 80vh;
+    padding-right: 10px;
+    border: 1px solid rgb(220, 20, 60);
+    border-radius: 0.5rem;
+}
+.card .header{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding-left: 0 100px;
+    margin-left: 20px;
+
+}
+.header .craigslist{
+    float: left;
+    color: #fff;
+    font-size: 2.3rem;
+    font-weight: 400;
+    letter-spacing: -1px;
+    font-family: cursive;
+    border-bottom: 1px solid #fff;
+}
+
+.header .searchbar{
+   /*  position: relative; */
+    width: 30%; 
+    height: 50px;
+    float: right;
+    margin: 0 8%;
+    position: relative;
+    border-bottom: 1px solid #fff;
+
+}
+
+.header .searchbar input[type=text]{
+    position: absolute;
+    width: 90%;
+    right: 0;
+    height: 30px;
+    border: 1px solid crimson;
+    border: none;
+    outline: none;
+    transition: all 0.5s ease-out;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-weight: 400;
+}
+
+
+.header .searchbar input[placeholder]{
+    font-size: 1rem;
+    padding-left: 10px;
+    color: #969090;
+}
+.header .searchbar .btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    background: white;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.header .searchbar .btn i{
+    color: rgb(220, 20, 60);
+    font-size: 1rem;
+    align-items: center;
+    justify-content: end;
+    
+}
+.header .searchbar input:focus{
+    width: 100%;
+    outline: none;
+}
+
+.card .cards-set{
+    display: flex;
+    margin: 20px 20px;
+    margin-left: 25px;
+    align-items: center;
+}
+.card .cards-set .card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+
+.card .cards-set .card-container .card-item1{
+    height: 330px;
+    width: 330px;
+    min-height: 50px;
+    margin: 10px auto;
+    background: #fff;
+    border: 1px solid crimson;
+    border-radius: 8px;
+    justify-content: end;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.card .cards-set .card-container .card-item1 .card-img-container{
+    width: 100%;
+    overflow: hidden;
+}
+.card .cards-set .card-container .card-item1 .card-img{
+    width: 100%;
+    height: auto;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    transition: all 0.3s linear;
+}
+.card .cards-set .card-container .card-item1 .card-img:hover{
+    transform: scale(1.1);
+}
+.card .cards-set .card-container .card-item1 .card-header{
+    margin-top: 10px;
+    padding-left: 5px;
+}
+.card .cards-set .card-container .card-item1 .card-header h3{
+    color: blue;
+    font-size: 1.5rem;
+
+}
+.card .cards-set .card-container .card-item1 .card-body{
+    margin: 0 5px;
+    font-size: 0.9rem;
+    padding: 10px 0;
+}
+.card .cards-set .card-container .card-item1:hover{
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+}
+/* end of craigslist contaienr */
+
+/* Start of Weather App css */
+.content-wrapper .weather-container{
+    max-width: 1000px;
+    height: auto;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0 15px;
+    border: 1px solid white;
+    text-align: center;
+    background-color: inherit;
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+    border-radius: 0.5rem;
+}
+.top-banner {
+    color: var(--text_light);
+    margin: 20px;
+  }
+ .container-fluid{
+      margin: 0 auto;
+  } 
+  .container-fluid .weather-header{
+    font-weight: bold;
+    font-size: 2.5rem;
+    letter-spacing: 0.02em;
+    font-family: cursive;
+    justify-items: center;
+  }
+  
+  .top-banner form {
+    margin-top: 30px;
+  }
+  
+  .top-banner form input {
+    font-size: 1.5rem;
+    height: 40px;
+    padding: 5px 5px 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid white;
+  }
+  
+  .top-banner form input::placeholder {
+    color: rgb(226, 210, 210); 
+  }
+  
+  .top-banner form button {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    padding: 15px 20px;
+    margin-left: 15px;
+    border-radius: 5px;
+    background-color: crimson;
+    transition: background 0.3s ease-in-out;
+    border: none;
+  }
+  
+  .top-banner form button:hover {
+    background: #fff;
+    box-shadow: 5px 5px crimson;
+  }
+  
+  .top-banner form .msg {
+    position: absolute;
+    width: 300px;
+    left: 40%;
+    top: 170px;
+    background: transparent;
+    max-width: 450px;
+    min-height: 40px;
+  }
+  
+  
+  /* SECTION #2
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .ajax-section {
+    margin: 70px 0 20px;
+  }
+  
+  .ajax-section .cities {
+    display: grid;
+    grid-gap: 32px 20px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .ajax-section .city {
+    position: relative;
+    padding: 40px 10%;
+    border-radius: 20px;
+    background: var(--text_light);
+    color: var(--text_med);
+  }
+  
+  .ajax-section .city::after {
+    content: '';
+    width: 90%;
+    height: 50px;
+    position: absolute;
+    bottom: -12px;
+    left: 5%;
+    z-index: -1;
+    opacity: 0.3;
+    border-radius: 20px;
+    background: var(--text_light);
+  }
+  
+  .ajax-section figcaption {
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .ajax-section .city-temp {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--text_dark);
+  }
+  
+  .ajax-section .city sup {
+    font-size: 0.5em;
+  }
+  
+  .ajax-section .city-name sup {
+    padding: 0.2em 0.6em;
+    border-radius: 30px;
+    color: var(--text_light);
+    background: var(--orange);
+  }
+  
+  .ajax-section .city-icon {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* MQ
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  @media screen and (max-width: 1000px) {
+    .ajax-section .cities {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .ajax-section .city-temp {
+      font-size: 3rem;
+    }
+    
+    .ajax-section {
+      margin-top: 20px;
+    }
+    
+    .top-banner form {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .top-banner form input,
+    .top-banner form button {
+      width: 100%;
+    }
+  
+    .top-banner form button {
+      margin: 20px 0 0 0;
+    }
+    
+    .top-banner form .msg {
+      position: static;
+      max-width: none;
+      min-height: 0;
+      margin-top: 10px;
+    }
+  
+    .ajax-section .cities {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    .ajax-section .cities {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+/* End of Content Wrapper Section */
+
+
+
+
+/* media query */
+@media screen and (min-width: 1368px){
+
+    .card .cards-set .card-container .card-item1{
+        height: 320px !important;
+        width: 320px !important;
+    }
+} 
+
+@media screen and (max-width: 960px){
+    .card .cards-set .card-container .card-item1{
+        height: 280px !important;
+        width: 280px !important;
+    }
+    #menu-admin .topnav{
+        display: none;
+    }
+    #menu-admin #menu a span{
+        display: inline-block;
+    }
+}
+@media screen and (max-width: 850px){
+    .card .cards-set .card-container .card-item1{
+        height: 260px !important;
+        width: 250px !important;
+    }
+}
+@media screen and (max-width: 680px){
+    .card .cards-set .card-container .card-item1{
+        height: 250px !important;
+        width: 230px !important;
+    }
+}
+@media screen and (max-width: 800px){
+    
+    #menu-admin #menu a span{
+        display: none;
+    }
+    #menu-admin{
+        float: left;
+        width: 80px;
+        position: relative;
+        border: none !important;
+    }
+    #menu-admin #menu{
+        margin-top: 50px;
+    }
+    #menu-admin #logo .img{
+        margin-top: 20px;
+        position: absolute;
+        top: 10px;
+        left: 3px;
+        width: 50px;
+        background: white;
+        border-radius: 50%;
+        justify-items: center;
+    }
+    #menu-admin #menu a{
+        padding-left: 20px;
+    }
+    #menu-admin #menu a i{
+        font-size: 30px;
+    }
+    #menu-admin #logo span{
+        display: none;
+    }
+    .content-wrapper{
+        margin-left: 80px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    #menu-admin{
+        float: left;
+        min-height: 50px;
+        width: 100%;
+        height: auto;
+        border: none !important;
+        background-color: coral;
+        box-shadow: none;
+        position: static;
+        margin-bottom: 0;
+        top: 0;
+    }
+    #menu-admin #responsive-menu{
+        float: right;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+    #menu-admin #responsive-menu .hamburger{
+        font-size: 20px;
+        color: white;
+    }
+    #menu-admin #logo{
+  /*       float: left; */
+        display:inline-block;
+        justify-content: center !important;
+    }
+    #menu-admin #logo span{
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 30%;
+        font-size: 0.8rem;
+    }
+    #menu-admin #logo .img{
+         position: absolute;
+         left: 10px;
+         top: -12px;
+         height: 50px;
+    }
+    #menu-admin #menu a span{
+        display: inline-block;
+    }
+    .content-wrapper{
+        margin-left: 0;
+        padding-top: 80px;
+    }
+    #menu-admin #responsive-menu{
+        display: block;
+    }
+    #menu-admin #menu{
+        display: none;
+    }
+    #menu-admin #menu.active{
+        transition: all 1s linear;
+        display: inline-block; 
+        height: auto;
+        margin: -30px 0;
+        font-size: 1.5rem;
+    }
+    #menu-admin #menu.active a i{
+        margin-right: 15px;
+        font-size: 1.3rem;
+    }
+} 

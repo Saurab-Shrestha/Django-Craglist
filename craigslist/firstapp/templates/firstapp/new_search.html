@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+
+{% block craigslist %}
+<div class="cards-set">
+    <h2 style="text-align: center">{{ search | title }}</h2>
+    <div class="card-container">
+        {% for post in final_postings %}
+        <div class="card-item1">
+            <div class="card-img-container">
+                  <img class="card-img" src="{{post.3}}" alt="">
+            </div>
+            <div class="card-header">
+                <h3 class="card-title">Price:: {{price.2}}</h3>
+            </div>
+            <div class="card-body">
+                <p>{{post.0}}</p>
+                <a href="{{post.1}}"></a> 
+            </div>
+        </div>
+        {% endfor %}
+    
+    </div>
+
+</div>
+{% endblock craigslist %}

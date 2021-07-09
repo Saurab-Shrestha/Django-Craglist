@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <div class="header">
+        <div class="craigslist">
+            Craigslist
+        </div>
+        
+        <div class="searchbar">
+            <form action="{% url 'new_search' %}">
+                {% csrf_token %}
+                <input type="text" class="search__input" placeholder="Type to search" name="search">
+                <button class="btn" type="submit" name="action">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    {% block craigslist %}
+
+    {% endblock craigslist %}
+</div>
+{% endblock content %}
